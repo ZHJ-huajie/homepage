@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="./public/css/bootstrap.css">
+    <link rel="stylesheet" href="./public/css/custom.css">
+    <style type="text/css">
+        #bookmark {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 4px 16px;
+            padding-left: 28px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bookmark-item {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            color: #fff;
+            max-width: 100px;
+            background: rgba(0, 0, 0, 0.2);
+            padding-right: 9px;
+            padding-left: 6px;
+            margin: 0 1px;
+            margin-bottom: 8px;
+            line-height: 24px;
+            border-radius: 14px;
+        }
+
+        .bookmark-item img {
+            width: 18px;
+            margin-right: 6px;
+        }
+
+        .bookmark-text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .bookmark-more {
+            display: none;
+            position: absolute;
+            left: 4px;
+            top: 2px;
+            z-index: 2;
+        }
+
+        .bookmark-more:hover+#bookmark,
+        #bookmark.active {
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, .4);
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="wrap">
+    <div class="bookmark-more"><svg t="1729844914519" class="icon" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="4271" width="20" height="20">
+            <path
+                d="M753.6 611.52a32 32 0 1 1 28.8 56.96l-256 128a32 32 0 0 1-28.8 0l-256-128a32 32 0 0 1 28.8-56.96L512 732.16zM753.6 323.52a32 32 0 1 1 28.8 56.96l-256 128a32 32 0 0 1-28.8 0l-256-128a32 32 0 1 1 28.8-56.96L512 444.16z"
+                fill="#e6e6e6" p-id="4272"></path>
+        </svg>
+    </div>
+    <div id="bookmark">
+        <!-- <a href="" class="bookmark-item">
+            <div class="bookmark-text">adfasdfasdfasdfasdf</div>
+        </a> -->
+    </div>
+    <div class="wrap-content">
+        <div class="search-box">
+            <form id="form" name="f" action="https://www.baidu.com/s" class="flex justify-center"
+                style="position: relative;">
+                <input id="wd" name="wd" type="text" autofocus />
+                <button type="submit" id="su">搜索</button>
+            </form>
+        </div>
+
+        <div class="links-list">
+        </div>
+    </div>
+    <!-- 修改设置面板HTML结构 -->
+    <div class="settings-panel">
+        <div class="settings-trigger" title="设置">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                    d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+                    fill="currentColor" />
+            </svg>
+        </div>
+        <div class="settings-menu">
+            <div class="settings-items">
+                <label class="edit-mode-switch settings-item">
+                    <input type="checkbox" id="editModeToggle">
+                    <span class="slider"></span>
+                    编辑模式
+                </label>
+                <button id="add-link" class="settings-item">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" />
+                    </svg>
+                    添加链接
+                </button>
+                <button id="change-bg" class="settings-item">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path
+                            d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                            fill="currentColor" />
+                    </svg>
+                    更换背景
+                </button>
+                <button id="import-links" class="settings-item">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                    </svg>
+                    导入链接
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./public/js/modal.js"></script>
+    <script src="./public/js/settings.js"></script>
+    <script src="./public/js/index.js"></script>
+    <script src="./public/js/linkManager.js"></script>
+    <script src="./public/js/localBackgroundManager.js"></script>
+    </body>
+
+</html>

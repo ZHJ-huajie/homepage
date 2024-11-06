@@ -1,0 +1,17 @@
+{
+  "watch": [
+    "src/",
+    "public/",
+    "views/"
+  ],
+  "ext": "js,json,ejs,css",
+  "ignore": [
+    "node_modules/",
+    "logs/",
+    "data/"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "3000"
+  }
+} 
