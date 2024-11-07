@@ -73,7 +73,7 @@ const customLinks = {
       }
 
       showToast('添加成功');
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.error('添加链接失败:', error);
       showToast('添加失败', 'error');
@@ -99,7 +99,7 @@ const customLinks = {
       }
 
       showToast('更新成功');
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.error('更新链接失败:', error);
       showToast('更新失败', 'error');

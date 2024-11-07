@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/custom.css">
 </head>
-<body class="wrap" style="background-image: url('<%= background.file_path %>')">
+<body class="wrap <%= size %>" style="background-image: url('<%= background.file_path %>')">
     
     <div class="wrap-content">
         <!-- 搜索框 -->
@@ -23,7 +23,6 @@
             <% links.forEach(function(link) { %>
                 <div class="links-item" data-id="<%= link.id %>">
                     <a href="<%= link.url %>" target="_blank">
-                        <div class="earth">
                             <% if (link.icon) { %>
                                 <% if (link.icon.startsWith('http') || link.icon.startsWith('data:image') || 
                                       link.icon.toLowerCase().endsWith('.svg') || link.icon.startsWith('<svg')) { %>
@@ -33,12 +32,15 @@
                                         <img src="<%= link.icon %>" alt="">
                                     <% } %>
                                 <% } else { %>
-                                    <%= link.icon %>
+                                    <div class="earth">
+                                        <%= link.icon %>
+                                    </div>
                                 <% } %>
                             <% } else { %>
-                                🔗
+                                <div class="earth">
+                                    🔗
+                                </div>
                             <% } %>
-                        </div>
                         <% if (!link.title) { %>
                         <strong class="title"><%= link.url %></strong>
                         <% } %>

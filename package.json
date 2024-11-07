@@ -1,11 +1,13 @@
 {
     "scripts": {
-        "dev": "NODE_ENV=development nodemon src/server.js",
-        "start": "NODE_ENV=production pm2 start ecosystem.config.js --env production",
+        "dev": "cross-env NODE_ENV=development nodemon src/server.js",
+        "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js --env production",
         "stop": "pm2 stop homePage",
         "restart": "pm2 restart homePage",
         "logs": "pm2 logs homePage",
-        "status": "pm2 status homePage"
+        "status": "pm2 status homePage",
+        "startup": "pm2 startup",
+        "save": "pm2 save"
     },
     "dependencies": {
         "axios": "^1.7.7",
@@ -13,10 +15,11 @@
         "ejs": "^3.1.6",
         "express": "^4.17.1",
         "multer": "^1.4.5-lts.1",
-        "sqlite3": "^5.0.2",
-        "pm2": "^5.3.1"
+        "pm2": "^5.3.1",
+        "sqlite3": "^5.0.2"
     },
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "nodemon": "^3.1.7"
     }
 }

@@ -35,7 +35,13 @@ app.get('/', async (req, res) => {
     const links = await require('./db').all('SELECT * FROM links ORDER BY sort ASC');
     
     const background = await require('./db').get('SELECT * FROM backgrounds WHERE is_active = 1');
-    res.render('home', { links, background });
+    let size = req.query.size || '';
+    const isMobile = req.query.mobile === 'true';
+    if (isMobile) {
+      size = 'mobile';
+    }
+
+    res.render('home', { links, background, size });
   } catch (err) {
     console.error('获取链接失败:', err);
     res.status(500).send('服务器错误');

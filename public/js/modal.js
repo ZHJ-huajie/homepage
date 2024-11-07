@@ -139,7 +139,7 @@ class Modal {
       }
 
       try {
-        if (linkData) {
+        if (linkData && linkData.id) {
           await customLinks.updateLink(linkData.id, { title, url, icon, sort });
         } else {
           await customLinks.addLink({ title, url, icon, sort });
