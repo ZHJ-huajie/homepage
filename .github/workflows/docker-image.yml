@@ -22,11 +22,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
-      run: |
-        # 假设你的 Dockerfile 在根目录下
-        docker build -t huajiee/homepage:0.0.1
-        docker push huajiee/homepage:0.0.1
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag huajiee/homepage:last
+    
+    - name: Push the Docker image
+      run: docker push huajiee/homepage:last
 
   create-tag:
     runs-on: ubuntu-latest
