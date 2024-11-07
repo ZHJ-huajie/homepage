@@ -15,19 +15,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
-    - name: Get Latest Release
-      id: get_release
-      run: |
-        response=$(curl -s https://api.github.com/repos/<owner>/<repo>/releases/latest)
-        latest_version=$(echo $response | jq -r .tag_name)
-        echo "Latest release version: $latest_version"
-        echo "::set-output name=latest_version::$latest_version"
-
-    - name: Use Latest Release
-      run: |
-        echo "The latest release version is ${{ steps.get_release.outputs.latest_version }}"
-
+      
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -35,10 +23,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/homepage:${{ steps.get_release.outputs.latest_version }}
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/homepage:last
     
     - name: Push the Docker image
-      run: docker push huajiee/homepage:${{ steps.get_release.outputs.latest_version }}
+      run: docker push huajiee/homepage:last
 
   create-tag:
     runs-on: ubuntu-latest
