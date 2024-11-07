@@ -16,6 +16,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+      
+
+    - name: Log in to the Docker registry
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}"
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -25,9 +31,8 @@ jobs:
     - name: Build and push Docker image
       run: |
         # 假设你的 Dockerfile 在根目录下
-        docker build -t ${DOCKER_USERNAME}/homepage:latest .
-        docker tag ${DOCKER_USERNAME}/homepage:${GITHUB_SHA}
-        docker push ${DOCKER_USERNAME}/homepage:latest
+        docker build -t huajiee/homepage:0.0.1
+        docker push huajiee/homepage:0.0.1
 
   create-tag:
     runs-on: ubuntu-latest
