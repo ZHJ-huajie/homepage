@@ -23,7 +23,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/homepage:last
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/homepage:${{GITHUB_SHA}}
     
     - name: Push the Docker image
       run: docker push huajiee/homepage:last
