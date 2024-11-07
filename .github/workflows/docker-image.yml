@@ -23,5 +23,5 @@ jobs:
       run: |
         # 假设你的 Dockerfile 在根目录下
         docker build -t ${DOCKER_USERNAME}/homepage .
-        docker tag ${DOCKER_USERNAME}/homepage ${DOCKER_USERNAME}/homepage:${GITHUB_SHA}
+        docker tag ${DOCKER_USERNAME}/homepage ${DOCKER_USERNAME}/homepage:last
         docker push ${DOCKER_USERNAME}/homepage
