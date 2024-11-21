@@ -23,10 +23,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/homepage:last
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/homepagee:last
     
     - name: Push the Docker image
-      run: docker push huajiee/homepage:last
+      run: docker push huajiee/homepagee:last
 
   create-tag:
     runs-on: ubuntu-latest
