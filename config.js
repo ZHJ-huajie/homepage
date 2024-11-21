@@ -14,7 +14,7 @@ module.exports = {
   
   // 上传配置
   upload: {
-    maxSize: 1024 * 1024 * 2, // 2MB
+    maxSize: 1024 * 1024 * 5, // 2MB
     allowedTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml']
   }
 }; 
